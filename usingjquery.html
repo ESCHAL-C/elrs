@@ -155,12 +155,16 @@
 
     function myFunction2() {
         var routeid = document.getElementById("routeid").value;
+        var routeid = $.trim(routeid)
         document.getElementById("show_routeid").innerHTML = routeid;
         var refmarker = document.getElementById("refmarker").value;
+        var refmarker = $.trim(refmarker)
         document.getElementById("show_refmarker").innerHTML = refmarker;
         var displacement = document.getElementById("displacement").value;
+        var displacement = $.trim(displacement)
         document.getElementById("show_displacement").innerHTML = displacement;
         var dfo = document.getElementById("dfo").value;
+        var dfo = $.trim(dfo)
         document.getElementById("show_dfo").innerHTML = dfo;
 
         var basepath = "https://grid-sys.us-e1.cloudhub.io/api/"
