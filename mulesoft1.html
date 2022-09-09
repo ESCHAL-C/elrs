@@ -74,6 +74,8 @@
   <p>NOTE: This webpage does not have any data validation for text fields yet.</p>
   <a href="usingjquery.html">eLRS Front End with jQuery</a>
 
+  <p id="p_returned_ROUTEID" class="textecho">FOO</p>
+
   <div class="calculator">
     <form style = "flex-basis: 40%;">
         <div class="multi-input">
@@ -127,12 +129,16 @@
         document.getElementById("elrs_frame").src=mule_elrs1;
 
         var request = new XMLHttpRequest();
+        console.log("new XMLHttpRequest");
         request.open('GET', mule_elrs1, true);
         request.onload = function () {
           var data = JSON.parse(this.response);
+          console.log(data);
+          console.log(request.status);
           if (request.status >= 200 && request.status < 400) {
             data.forEach(point => {
               var returned_ROUTEID = point.ROUTEID;
+              console.log(returned_ROUTEID);
               document.getElementById("p_returned_ROUTEID").innerHTML=returned_ROUTEID;
             });
           };
