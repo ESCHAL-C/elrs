@@ -91,12 +91,12 @@
             <input type="text" id="lon" name="lon" class="textentry">
             <p id="show_lon" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction11()" class="resultsbtn">Return Results</button><br><br>
+          <br><button type="button" onclick="myFunction111()" class="resultsbtn">Return Results</button><br><br>
           <a href="" id="elrs1_url" class="erls_url"></a>
         </div>
     </form>
 
-    <p id="p_returned_ROUTEID" class="textecho"></p>
+    <p id="p_returned_ROUTEID" class="textecho">FOO</p>
   </div>
 
   <script>
@@ -142,6 +142,59 @@
           };
         };
     }
+
+    function myFunction111() {
+
+        async function getELRS1() {
+            var lat = document.getElementById("lat").value;
+            document.getElementById("show_lat").innerHTML = lat;
+            var lon = document.getElementById("lon").value;
+            document.getElementById("show_lon").innerHTML = lon;
+
+            var mulepath = "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/b42f4441-6b1f-448b-a136-2b6b52280e5a/grid-sys/1.0.9/m/"
+            var mule_elrs1 = mulepath + "elrs1?Lat=" + lat + "&Lon=" + lon
+
+            document.getElementById("elrs1_url").innerHTML=mule_elrs1;
+            document.getElementById("elrs1_url").href=mule_elrs1;
+
+            let url = mule_elrs1;
+            try {
+                let res = await fetch(url);
+                return await res.json();
+            } catch (error) {
+                console.log(error);
+            }
+        }
+
+        async function renderELRS1() {
+            let results = await getELRS1();
+            let html = '';
+            results.forEach(result => {
+                let htmlSegment = `<div class="result">
+                                    <h2>${result.ROUTEID}</h2>
+                                </div>`;
+                html += htmlSegment;
+            });
+
+            let container = document.querySelector('.container');
+            document.getElementById("p_returned_ROUTEID").innerHTML = html;
+        }
+
+        renderUsers();
+
+      }
+
+
+
+
+
+
+
+
+
+
+
+
 
 //https://stackoverflow.com/questions/4728520/get-innerhtml-from-external-page-with-javascript
 
