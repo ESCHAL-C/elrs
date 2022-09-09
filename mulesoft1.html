@@ -95,6 +95,7 @@
     </form>
 
     <iframe src="" id="elrs_frame" style = "flex-basis: 40%;"></iframe>
+    <p id="p_returned_ROUTEID" class="textecho"></p>
   </div>
 
   <script>
@@ -124,6 +125,25 @@
         document.getElementById("elrs1_url").innerHTML=mule_elrs1;
         document.getElementById("elrs1_url").href=mule_elrs1;
         document.getElementById("elrs_frame").src=mule_elrs1;
+
+        var request = new XMLHttpRequest();
+        request.open('GET', mule_elrs1, true);
+        request.onload = function () {
+
+          // Begin accessing JSON data here
+          var data = JSON.parse(this.response);
+          if (request.status >= 200 && request.status < 400) {
+            data.forEach(point => {
+              var returned_ROUTEID = point.ROUTEID;
+              document.getElementById("p_returned_ROUTEID").innerHTML=returned_ROUTEID;
+            }
+
+          }
+        }
+
+
+
+
     }
 
 //https://stackoverflow.com/questions/4728520/get-innerhtml-from-external-page-with-javascript
