@@ -159,7 +159,7 @@
 
             let url = mule_elrs1;
             try {
-                let res = await fetch(url {method: 'GET', mode: 'no-cors'});
+                let res = await fetch(url, {method: 'GET', mode: 'no-cors'});
                 return await res.json();
             } catch (error) {
                 console.log(error);
@@ -184,24 +184,6 @@
 
       }
 
-
-
-
-
-
-
-
-
-
-
-
-
-//https://stackoverflow.com/questions/4728520/get-innerhtml-from-external-page-with-javascript
-
-//https://grid-sys.us-e1.cloudhub.io/api/elrs1?Lat=29.39780972&Lon=-94.98759004
-//https://grid-sys.us-e1.cloudhub.io/api/elrs2?RouteID=IH0010-KG&ReferenceMarker=476&Displacement=4
-//https://grid-sys.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=LY7609&MilePointMeasure=.2
-//https://grid-sys.us-e1.cloudhub.io/api/elrs4?RouteID=IH0010-KG&DistanceFromOrigin=.5
 
 
   </script>
