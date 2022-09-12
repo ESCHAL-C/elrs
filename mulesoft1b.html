@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mulesoft eLRS Front End - without jQuery - CORS mode</title>
+<title>mulesoft eLRS Front End - without jQuery - no-CORS mode</title>
 
 <script>
 </script>
@@ -74,7 +74,7 @@
   <p>NOTE: This webpage does not have any data validation for text fields yet.</p>
   <a href="index.html">eLRS Front End with iFrame, no jQuery</a>
   <a href="usingjquery.html">eLRS Front End with jQuery</a>
-  <a href="mulesoft1b.html">mulesoft eLRS Front End - without jQuery - no-CORS mode</a>
+  <a href="mulesoft1.html">mulesoft eLRS Front End - without jQuery - CORS mode</a>
 
   <p id="p_returned_ROUTEID" class="textecho">FOO</p>
 
@@ -119,8 +119,7 @@
 
             let url = mule_elrs1;
             try {
-                //let res = await fetch(url, {method: 'GET', mode: 'no-cors'});
-                let res = await fetch(url, {method: 'GET'});
+                let res = await fetch(url, {method: 'GET', mode: 'no-cors'});
                 // https://stackoverflow.com/questions/43317967/handle-response-syntaxerror-unexpected-end-of-input-when-using-mode-no-cors
                 // https://developer.mozilla.org/en-US/docs/Web/API/ShadowRoot
                 return await res.json();
