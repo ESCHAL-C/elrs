@@ -132,9 +132,9 @@
         async function renderELRS1() {
             let results = await getELRS1();
             let html = '';
-            //results.forEach(result => {let routeid_Segment = ${result.ROUTEID};});
-            //document.getElementById("p_returned_ROUTEID").innerHTML = routeid_Segment;
-            document.getElementById("p_returned_ROUTEID").innerHTML = results;
+            results.forEach(result => {let routeid_Segment = ${result.ROUTEID};});
+            document.getElementById("p_returned_ROUTEID").innerHTML = routeid_Segment;
+            //document.getElementById("p_returned_ROUTEID").innerHTML = results;
         }
 
         renderELRS1();
