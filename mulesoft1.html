@@ -2,7 +2,7 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>mulesoft eLRS Front End - without jQuery - CORS mode</title>
+<title>grid API eLRS Front End - without jQuery - CORS mode</title>
 
 <script>
 </script>
@@ -74,7 +74,7 @@
   <p>NOTE: This webpage does not have any data validation for text fields yet.</p>
   <a href="index.html">eLRS Front End with iFrame, no jQuery</a>
   <a href="usingjquery.html">eLRS Front End with jQuery</a>
-  <a href="mulesoft1b.html">mulesoft eLRS Front End - without jQuery - no-CORS mode</a>
+  <a href="grid_api1b.html">grid API eLRS Front End - without jQuery - no-CORS mode</a>
 
   <p id="p_returned_ROUTEID" class="textecho">FOO</p>
 
@@ -111,13 +111,13 @@
             var lon = document.getElementById("lon").value;
             document.getElementById("show_lon").innerHTML = lon;
 
-            var mulepath = "https://anypoint.mulesoft.com/mocking/api/v1/sources/exchange/assets/b42f4441-6b1f-448b-a136-2b6b52280e5a/grid-sys/1.0.9/m/"
-            var mule_elrs1 = mulepath + "elrs1?Lat=" + lat + "&Lon=" + lon
+            var gridpath = "https://grid-sys.us-e1.cloudhub.io/api/"
+            var grid_elrs1 = gridpath + "elrs1?Lat=" + lat + "&Lon=" + lon
 
-            document.getElementById("elrs1_url").innerHTML=mule_elrs1;
-            document.getElementById("elrs1_url").href=mule_elrs1;
+            document.getElementById("elrs1_url").innerHTML=grid_elrs1;
+            document.getElementById("elrs1_url").href=grid_elrs1;
 
-            let url = mule_elrs1;
+            let url = grid_elrs1;
             try {
                 //let res = await fetch(url, {method: 'GET', mode: 'no-cors'});
                 let res = await fetch(url, {method: 'GET'});

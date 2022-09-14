@@ -4,10 +4,136 @@
 <meta charset="UTF-8">
 <title>eLRS Front End - without jQuery</title>
 
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&family=Red+Hat+Mono&display=swap" rel="stylesheet">
+
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
 <script>
 </script>
 
+<!-- reset CSS -->
 <style>
+  html, body, div, span, applet, object, iframe,
+  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+  a, abbr, acronym, address, big, cite, code,
+  del, dfn, em, img, ins, kbd, q, s, samp,
+  small, strike, strong, sub, sup, tt, var,
+  b, u, i, center,
+  dl, dt, dd, ol, ul, li,
+  fieldset, form, label, legend,
+  table, caption, tbody, tfoot, thead, tr, th, td,
+  article, aside, canvas, details, embed,
+  figure, figcaption, footer, header, hgroup,
+  menu, nav, output, ruby, section, summary,
+  time, mark, audio, video {
+  	margin: 0;
+  	padding: 0;
+  	border: 0;
+  	font-size: 100%;
+  	font: inherit;
+  	vertical-align: baseline;
+  }
+  /* HTML5 display-role reset for older browsers */
+  article, aside, details, figcaption, figure,
+  footer, header, hgroup, menu, nav, section {
+  	display: block;
+  }
+  body {
+  	line-height: 1;
+  }
+  ol, ul {
+  	list-style: none;
+  }
+  blockquote, q {
+  	quotes: none;
+  }
+  blockquote:before, blockquote:after,
+  q:before, q:after {
+  	content: '';
+  	content: none;
+  }
+  table {
+  	border-collapse: collapse;
+  	border-spacing: 0;
+  }
+</style>
+
+<style>
+
+  .nav {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: #777;
+  }
+
+  .nav li {
+    display: inline;
+    float: left;
+  }
+
+  .nav li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 14px 16px;
+    text-decoration: none;
+    font-family: 'Poppins', sans-serif;
+  }
+
+  .w3-panel h3 {
+    display: block;
+    font-weight: bold;
+    font-size: 24px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    margin: 10px 0;
+  }
+
+  .w3-panel p {
+    display: block;
+    font-size: 18px;
+    font-family: "Segoe UI",Arial,sans-serif;
+    margin: 10px 0;
+  }
+
+  .format_list {
+    list-style-type: disc;
+    padding-left: 25px;
+  }
+
+  .format_list li {
+    font-family: 'Red Hat Mono', monospace;
+  }
+
+  .intro p {
+    font-family: 'DM Serif Display', serif;
+    padding-bottom: 10px;
+  }
+
+  h1, h2, h4 {
+    font-family: 'DM Serif Display', serif;
+  }
+
+  h1 {
+    font-size: 40px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  h2 {
+    font-size: 30px;
+    margin-top: 20px;
+    margin-bottom: 20px;
+  }
+
+  h4 {
+    font-size: 20px;
+    margin-bottom: 10px;
+  }
+
   .calculator {
     display: flex;
     flex-direction: row;
@@ -26,6 +152,12 @@
     padding: 0;
     margin: 0;
     list-style: none;
+    border: 3px solid SlateGray;
+    border-radius: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-right: 10px;
+    padding-left: 10px;
   }
 
   .singleinput {
@@ -38,6 +170,10 @@
     list-style: none;
   }
 
+  .example {
+    font-family: 'Red Hat Mono', monospace;
+  }
+
   .label, .textentry, .textecho {
     padding: 5px;
     margin-top: 10px;
@@ -45,43 +181,94 @@
   }
 
   .label {
-    width: 200px;
+    width: 225px;
+    background-color: LightBlue;
+    font-family: 'Poppins', sans-serif;
+    border-radius: 10px 0 0 10px;
+    padding: 10px 10px 0;
   }
 
-  .textentry, .textecho {
+  .textentry {
+    width: 125px;
+    background-color: whitesmoke;
+    font-family: 'Red Hat Mono', monospace;
+    border-radius: 0 10px 10px 0;
+  }
+
+  .textecho {
     width: 100px;
+    font-family: 'Red Hat Mono', monospace;
+    padding: 10px 10px 0;
   }
 
   .resultsbtn {
-    width: 200px;
+    width: 320px;
+    font-family: 'Poppins', sans-serif;
+    background-color: OrangeRed;
+    border: none;
+    color: white;
+    padding: 10px 10px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    font-size: 16px;
+    border-radius: 10px;
   }
 
+  .elrs_url {
+    font-family: 'Red Hat Mono', monospace;
+    padding: 5px;
+    margin-bottom: 20px;
+  }
+
+  iframe {
+      border-style: inset;
+      border-image: initial;
+      border: 3px solid SlateGray;
+      border-radius: 25px;
+      margin-top: 10px;
+      margin-bottom: 10px;
+      margin-left: 10px;
+      margin-right: 10px;
+  }
 
 
 </style>
 </head>
+
+
 <body>
 
-  <h1>eLRS Front End Demo</h1>
-  <p>This eLRS tool can accept coordinates in four different formats:</p>
-    <ul>
-      <li>Lat, Lon</li>
-      <li>RouteID (Route Name), Reference Marker, and Displacement</li>
-      <li>RouteID (Route Name), And Distance from Origin</li>
-      <li>CSJ And Mile Point Measure</li>
-    </ul>
+  <ul class="nav">
+    <li><a href="usingjquery.html">jQuery</a></li>
+    <li><a href="grid_api1.html">CORS mode</a></li>
+    <li><a href="grid_api1b.html">no-CORS mode</a></li>
+  </ul>
 
-  <p>NOTE: This webpage does not have any data validation for text fields yet.</p>
-  <a href="usingjquery.html">eLRS Front End with jQuery</a>
-  <a href="mulesoft1.html">mulesoft eLRS Front End - without jQuery - CORS mode</a>
-  <a href="mulesoft1b.html">mulesoft eLRS Front End - without jQuery - no-CORS mode</a>
+  <div class="w3-panel w3-yellow">
+    <h3>Warning!</h3>
+    <p>This webpage does not have any data validation for text fields yet.</p>
+  </div>
+
+  <div class ="intro" style = "padding: 0 50px 20px 50px;">
+    <h1>eLRS Front End Demo</h1>
+
+    <p>This eLRS tool can accept coordinates in four different formats:</p>
+      <ul class="format_list">
+        <li>Lat, Lon</li>
+        <li>RouteID (Route Name), Reference Marker, and Displacement</li>
+        <li>RouteID (Route Name), And Distance from Origin</li>
+        <li>CSJ And Mile Point Measure</li>
+      </ul>
+  </div>
 
 
-  <div class="calculator">
-    <form style = "flex-basis: 40%;">
+  <div class="calculator" style = "padding: 0 50px 0 50px;">
+    <form style = "flex-basis: 550px;">
         <div class="multi-input">
           <h2>Query by Lat Lon</h2>
-          <p>Example: Lat=29.39780972 Lon=-94.98759004</p>
+          <h4><strong>Example: </strong></h4>
+          <p class="example">Lat = 29.39780972<br>Lon = -94.98759004</p>
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
             <input type="text" id="lat" name="lat" class="textentry">
@@ -92,12 +279,13 @@
             <input type="text" id="lon" name="lon" class="textentry">
             <p id="show_lon" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction1()" class="resultsbtn">Return Results</button><br><br>
-          <a href="" id="elrs1_url" class="erls_url"></a>
+          <br><button type="button" onclick="myFunction1()" class="resultsbtn">Return Results</button><br>
+          <a href="" id="elrs1_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
           <h2>Query by Route Name</h2>
-          <p>Example: RouteID=IH0010-KG ReferenceMarker=476 Displacement=4</p>
+          <h4><strong>Example: </strong></h4>
+          <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p>
           <div class="singleinput">
             <label for="routeid" class="label">RouteID (Route Name):</label>
             <input type="text" id="routeid" name="routeid" class="textentry">
@@ -118,12 +306,13 @@
             <input type="text" id="dfo" name="dfo" class="textentry">
             <p id="show_dfo" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction2()" class="resultsbtn">Return Results</button><br><br>
-          <a href="" id="elrs2_url" class="erls_url"></a>
+          <br><button type="button" onclick="myFunction2()" class="resultsbtn">Return Results</button><br>
+          <a href="" id="elrs2_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
           <h2>Query by CSJ</h2>
-          <p>Example: ControlSectionNumber=LY7609 MilePointMeasure=.2</p>
+          <h4><strong>Example: </strong></h4>
+          <p class="example">ControlSectionNumber = LY7609<br>MilePointMeasure = .2</p>
           <div class="singleinput">
             <label for="csj" class="label">CSJ:</label>
             <input type="text" id="csj" name="csj" class="textentry">
@@ -134,12 +323,12 @@
             <input type="text" id="mpm" name="mpm" class="textentry">
             <p id="show_mpm" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction3()" class="resultsbtn">Return Results</button><br><br>
-          <a href="" id="elrs3_url" class="erls_url"></a>
+          <br><button type="button" onclick="myFunction3()" class="resultsbtn">Return Results</button><br>
+          <a href="" id="elrs3_url" class="elrs_url"></a>
         </div>
     </form>
 
-    <iframe src="" id="elrs_frame" style = "flex-basis: 40%;"></iframe>
+    <iframe src="" id="elrs_frame" style = "flex-basis: 500px;"></iframe>
   </div>
 
   <script>
