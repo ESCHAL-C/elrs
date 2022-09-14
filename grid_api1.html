@@ -146,8 +146,8 @@
             result.forEach(rte_coord => {
                 let routeid_Segment = rte_coord.ROUTEID;
                 console.log(rte_coord.ROUTEID);
+                document.getElementById("p_returned_ROUTEID").innerHTML = routeid_Segment;
               })
-            document.getElementById("p_returned_ROUTEID").innerHTML = routeid_Segment;
         }
 
         getELRS1();
