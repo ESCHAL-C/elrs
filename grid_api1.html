@@ -141,7 +141,7 @@
 
         async function renderELRS1() {
             //const response = await getELRS1();
-            //const results = await response.json();
+            const result = await getELRS1();
             //console.log(results);
             result.forEach(rte_coord => {
                 let routeid_Segment = rte_coord.ROUTEID;
