@@ -1,0 +1,257 @@
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+
+
+/* nav bar */
+
+.nav {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  background-color: #777;
+}
+
+.nav li {
+  display: inline;
+  float: left;
+}
+
+.nav li a {
+  display: block;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+  font-family: 'Poppins', sans-serif;
+}
+
+
+/* warning bar */
+
+.w3-panel h3 {
+  display: block;
+  font-weight: bold;
+  font-size: 24px;
+  font-family: "Segoe UI",Arial,sans-serif;
+  margin: 10px 0;
+}
+
+.w3-panel p {
+  display: block;
+  font-size: 18px;
+  font-family: "Segoe UI",Arial,sans-serif;
+  margin: 10px 0;
+}
+
+/* lists */
+
+.format_list {
+  list-style-type: disc;
+  padding-left: 25px;
+}
+
+.format_list li {
+  font-family: 'Red Hat Mono', monospace;
+}
+
+/* intro */
+.intro {
+	padding: 0 50px 20px 50px;
+}
+
+.intro p {
+  font-family: 'DM Serif Display', serif;
+  padding-bottom: 10px;
+}
+
+/* headings */
+
+h1, h2, h4 {
+  font-family: 'DM Serif Display', serif;
+}
+
+h1 {
+  font-size: 40px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h2 {
+  font-size: 30px;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+h4 {
+  font-size: 20px;
+  margin-bottom: 10px;
+}
+
+/* flex boxes */
+
+.calculator {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  padding: 0 50px 0 50px;
+  margin: 0;
+  list-style: none;
+}
+
+.calculator > form {
+	flex-basis: 550px;
+}
+
+.calculator > .results_pane {
+	flex-basis: 550px;
+}
+
+.multi-input, .multi-output {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: flex-start;
+  list-style: none;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  margin-right: 10px;
+  padding-left: 10px;
+	padding: 10px;
+}
+
+.singleinput, .singleoutput {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: nowrap;
+  justify-content: flex-start;
+  padding: 0;
+  margin: 0;
+  list-style: none;
+}
+
+
+
+
+/* div styling */
+
+.multi-input, .multi-output {
+  border: 3px solid SlateGray;
+  border-radius: 25px;
+}
+
+/*
+.results_pane {
+    border-style: inset;
+    border-image: initial;
+    border: 3px solid SlateGray;
+    border-radius: 25px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    margin-left: 10px;
+    margin-right: 10px;
+}
+*/
+
+
+/* calculator element styling */
+
+.example, .textentry, .textecho, .textout, .elrs_url {
+  font-family: 'Red Hat Mono', monospace;
+}
+
+.label, .resultsbtn, .label_output {
+  font-family: 'Poppins', sans-serif;
+}
+
+.label, .textentry, .textecho, .textout, .label_output {
+  padding: 5px;
+  margin-top: 10px;
+  text-align: left;
+}
+
+.label, .label_output {
+  width: 225px;
+  background-color: LightBlue;
+  border-radius: 10px 0 0 10px;
+  padding: 10px 10px 0;
+	padding: 10px 10px 10px 10px;
+	margin-top: 10px;
+}
+
+.textentry {
+  width: 125px;
+  background-color: whitesmoke;
+  border-radius: 0 10px 10px 0;
+}
+
+.textecho {
+  width: 100px;
+  padding: 10px 10px 0;
+}
+
+.textout {
+  width: 150px;
+  padding: 10px 10px 0;
+}
+
+.resultsbtn {
+  width: 320px;
+  background-color: OrangeRed;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.elrs_url {
+  padding: 5px;
+  margin-bottom: 20px;
+}

@@ -1,256 +1,40 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="UTF-8">
-<title>eLRS Front End - without jQuery</title>
+  <meta charset="UTF-8">
 
-<link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&family=Red+Hat+Mono&display=swap" rel="stylesheet">
+  <title>eLRS Front End</title>
 
-<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display&family=Poppins&family=Red+Hat+Mono&display=swap" rel="stylesheet">
 
-<script>
-</script>
+  <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+  <link rel="stylesheet" href="style.css">
 
-<!-- reset CSS -->
-<style>
-  html, body, div, span, applet, object, iframe,
-  h1, h2, h3, h4, h5, h6, p, blockquote, pre,
-  a, abbr, acronym, address, big, cite, code,
-  del, dfn, em, img, ins, kbd, q, s, samp,
-  small, strike, strong, sub, sup, tt, var,
-  b, u, i, center,
-  dl, dt, dd, ol, ul, li,
-  fieldset, form, label, legend,
-  table, caption, tbody, tfoot, thead, tr, th, td,
-  article, aside, canvas, details, embed,
-  figure, figcaption, footer, header, hgroup,
-  menu, nav, output, ruby, section, summary,
-  time, mark, audio, video {
-  	margin: 0;
-  	padding: 0;
-  	border: 0;
-  	font-size: 100%;
-  	font: inherit;
-  	vertical-align: baseline;
-  }
-  /* HTML5 display-role reset for older browsers */
-  article, aside, details, figcaption, figure,
-  footer, header, hgroup, menu, nav, section {
-  	display: block;
-  }
-  body {
-  	line-height: 1;
-  }
-  ol, ul {
-  	list-style: none;
-  }
-  blockquote, q {
-  	quotes: none;
-  }
-  blockquote:before, blockquote:after,
-  q:before, q:after {
-  	content: '';
-  	content: none;
-  }
-  table {
-  	border-collapse: collapse;
-  	border-spacing: 0;
-  }
-</style>
-
-<style>
-
-  .nav {
-    list-style-type: none;
-    margin: 0;
-    padding: 0;
-    overflow: hidden;
-    background-color: #777;
-  }
-
-  .nav li {
-    display: inline;
-    float: left;
-  }
-
-  .nav li a {
-    display: block;
-    color: white;
-    text-align: center;
-    padding: 14px 16px;
-    text-decoration: none;
-    font-family: 'Poppins', sans-serif;
-  }
-
-  .w3-panel h3 {
-    display: block;
-    font-weight: bold;
-    font-size: 24px;
-    font-family: "Segoe UI",Arial,sans-serif;
-    margin: 10px 0;
-  }
-
-  .w3-panel p {
-    display: block;
-    font-size: 18px;
-    font-family: "Segoe UI",Arial,sans-serif;
-    margin: 10px 0;
-  }
-
-  .format_list {
-    list-style-type: disc;
-    padding-left: 25px;
-  }
-
-  .format_list li {
-    font-family: 'Red Hat Mono', monospace;
-  }
-
-  .intro p {
-    font-family: 'DM Serif Display', serif;
-    padding-bottom: 10px;
-  }
-
-  h1, h2, h4 {
-    font-family: 'DM Serif Display', serif;
-  }
-
-  h1 {
-    font-size: 40px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  h2 {
-    font-size: 30px;
-    margin-top: 20px;
-    margin-bottom: 20px;
-  }
-
-  h4 {
-    font-size: 20px;
-    margin-bottom: 10px;
-  }
-
-  .calculator {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .multi-input {
-    display: flex;
-    flex-direction: column;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-    border: 3px solid SlateGray;
-    border-radius: 25px;
-    margin-top: 10px;
-    margin-bottom: 10px;
-    margin-right: 10px;
-    padding-left: 10px;
-  }
-
-  .singleinput {
-    display: flex;
-    flex-direction: row;
-    flex-wrap: nowrap;
-    justify-content: flex-start;
-    padding: 0;
-    margin: 0;
-    list-style: none;
-  }
-
-  .example {
-    font-family: 'Red Hat Mono', monospace;
-  }
-
-  .label, .textentry, .textecho {
-    padding: 5px;
-    margin-top: 10px;
-    text-align: left;
-  }
-
-  .label {
-    width: 225px;
-    background-color: LightBlue;
-    font-family: 'Poppins', sans-serif;
-    border-radius: 10px 0 0 10px;
-    padding: 10px 10px 0;
-  }
-
-  .textentry {
-    width: 125px;
-    background-color: whitesmoke;
-    font-family: 'Red Hat Mono', monospace;
-    border-radius: 0 10px 10px 0;
-  }
-
-  .textecho {
-    width: 100px;
-    font-family: 'Red Hat Mono', monospace;
-    padding: 10px 10px 0;
-  }
-
-  .resultsbtn {
-    width: 320px;
-    font-family: 'Poppins', sans-serif;
-    background-color: OrangeRed;
-    border: none;
-    color: white;
-    padding: 10px 10px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    font-size: 16px;
-    border-radius: 10px;
-  }
-
-  .elrs_url {
-    font-family: 'Red Hat Mono', monospace;
-    padding: 5px;
-    margin-bottom: 20px;
-  }
-
-  iframe {
-      border-style: inset;
-      border-image: initial;
-      border: 3px solid SlateGray;
-      border-radius: 25px;
-      margin-top: 10px;
-      margin-bottom: 10px;
-      margin-left: 10px;
-      margin-right: 10px;
-  }
-
-
-</style>
+  <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
+  <script src="elrs_scripts.js"></script>
+  <script src="Convert_1_FromLatLon_scripts.js"></script>
+  <script src="Convert_2_FromRteRefMrkr_scripts.js"></script>
+  <script src="Convert_3_FromCSJ_scripts.js"></script>
+  <script src="Convert_4_FromRteDFO_scripts.js"></script>
 </head>
 
-
 <body>
-
   <ul class="nav">
-    <li><a href="usingjquery.html">jQuery</a></li>
-    <li><a href="grid_api1.html">CORS mode</a></li>
-    <li><a href="grid_api1b.html">no-CORS mode</a></li>
   </ul>
 
   <div class="w3-panel w3-yellow">
     <h3>Warning!</h3>
+    <p>Some field names appear to be swapped in the API.</p>
+    <p>Query by Route Name does not accept DFOs yet.</p>
+    <p>When multiple roads are returned, only the last one is displayed.</p>
+    <p>There is no error handling when no road is returned.</p>
     <p>This webpage does not have any data validation for text fields yet.</p>
+    <p>There is no clear button to remove inputs.</p>
   </div>
 
-  <div class ="intro" style = "padding: 0 50px 20px 50px;">
+  <div class ="intro">
     <h1>eLRS Front End Demo</h1>
 
     <p>This eLRS tool can accept coordinates in four different formats:</p>
@@ -262,9 +46,8 @@
       </ul>
   </div>
 
-
-  <div class="calculator" style = "padding: 0 50px 0 50px;">
-    <form style = "flex-basis: 550px;">
+  <div class="calculator">
+    <form>
         <div class="multi-input">
           <h2>Query by Lat Lon</h2>
           <h4><strong>Example: </strong></h4>
@@ -279,7 +62,7 @@
             <input type="text" id="lon" name="lon" class="textentry">
             <p id="show_lon" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction1()" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="Convert_1_FromLatLon()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs1_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
@@ -287,7 +70,7 @@
           <h4><strong>Example: </strong></h4>
           <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p>
           <div class="singleinput">
-            <label for="routeid" class="label">RouteID (Route Name):</label>
+            <label for="routeid" class="label">Route Name:</label>
             <input type="text" id="routeid" name="routeid" class="textentry">
             <p id="show_routeid" class="textecho"></p>
           </div>
@@ -306,7 +89,7 @@
             <input type="text" id="dfo" name="dfo" class="textentry">
             <p id="show_dfo" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction2()" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="Convert_2_FromRteRefMrkr()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs2_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
@@ -323,74 +106,71 @@
             <input type="text" id="mpm" name="mpm" class="textentry">
             <p id="show_mpm" class="textecho"></p>
           </div>
-          <br><button type="button" onclick="myFunction3()" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="Convert_3_FromCSJ()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs3_url" class="elrs_url"></a>
         </div>
     </form>
+    <div class="results_pane">
+        <div class="multi-output">
+          <h2>Results</h2>
+          <div class="singleoutput">
+            <p class="label_output">RouteID:</p>
+            <p id="p_returned_ROUTEID" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Roadbed Type:</p>
+            <p id="p_returned_RDBD_TYPE_DSCR" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Route Prefix Type:</p>
+            <p id="p_returned_RTE_PRFX_TYPE_DSCR" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Route Number:</p>
+            <p id="p_returned_ROUTENUMBER" class="textout"></p>
+          </div>
 
-    <iframe src="" id="elrs_frame" style = "flex-basis: 500px;"></iframe>
+          <h2>Lat Lon</h2>
+          <div class="singleoutput">
+            <p class="label_output">Latitude:</p>
+            <p id="p_returned_LAT" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Longitude:</p>
+            <p id="p_returned_LON" class="textout"></p>
+          </div>
+          <h2>Route Name</h2>
+          <div class="singleoutput">
+            <p class="label_output">Route Name:</p>
+            <p id="p_returned_RTE_DEFN_LN_NM" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Reference Marker:</p>
+            <p id="p_returned_RMRKR_PNT_NBR" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Displacement:</p>
+            <p id="p_returned_RMRKR_DISPLACEMENT" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Distance from Origin:</p>
+            <p id="p_returned_RTE_DFO" class="textout"></p>
+          </div>
+
+          <h2>CSJ</h2>
+          <div class="singleoutput">
+            <p class="label_output">CSJ:</p>
+            <p id="p_returned_CTRL_SECT_LN_NBR" class="textout"></p>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Mile Point Measure:</p>
+            <p id="p_returned_CTRL_SECT_MPT" class="textout"></p>
+          </div>
+
+        </div>
+        <iframe src="" id="elrs_frame" ></iframe>
+    </div>
+
   </div>
-
-  <script>
-    function myFunction1() {
-        var lat = document.getElementById("lat").value;
-        document.getElementById("show_lat").innerHTML = lat;
-        var lon = document.getElementById("lon").value;
-        document.getElementById("show_lon").innerHTML = lon;
-
-        var basepath = "https://grid-sys.us-e1.cloudhub.io/api/"
-        var elrs1 = basepath + "elrs1?Lat=" + lat + "&Lon=" + lon
-
-        document.getElementById("elrs1_url").innerHTML=elrs1;
-        document.getElementById("elrs1_url").href=elrs1;
-        document.getElementById("elrs_frame").src=elrs1;
-    }
-
-    function myFunction2() {
-        var routeid = document.getElementById("routeid").value;
-        document.getElementById("show_routeid").innerHTML = routeid;
-        var refmarker = document.getElementById("refmarker").value;
-        document.getElementById("show_refmarker").innerHTML = refmarker;
-        var displacement = document.getElementById("displacement").value;
-        document.getElementById("show_displacement").innerHTML = displacement;
-        var dfo = document.getElementById("dfo").value;
-        document.getElementById("show_dfo").innerHTML = dfo;
-
-        var basepath = "https://grid-sys.us-e1.cloudhub.io/api/"
-        var elrs2 = basepath + "elrs2?RouteID=" + routeid + "&ReferenceMarker=" + refmarker + "&Displacement=" + displacement
-        var elrs4 = basepath + "elrs4?RouteID=" + routeid + "&DistanceFromOrigin=" + dfo
-
-        document.getElementById("elrs2_url").innerHTML=elrs2;
-        document.getElementById("elrs2_url").href=elrs2;
-        document.getElementById("elrs_frame").src=elrs2;
-    }
-
-    function myFunction3() {
-        var csj = document.getElementById("csj").value;
-        document.getElementById("show_csj").innerHTML = csj;
-        var mpm = document.getElementById("mpm").value;
-        document.getElementById("show_mpm").innerHTML = mpm;
-
-        var basepath = "https://grid-sys.us-e1.cloudhub.io/api/"
-        var elrs3 = basepath + "elrs3?ControlSectionNumber=" + csj + "&MilePointMeasure=" + mpm
-
-        document.getElementById("elrs3_url").innerHTML=elrs3;
-        document.getElementById("elrs3_url").href=elrs3;
-        document.getElementById("elrs_frame").src=elrs3;
-    }
-
-
-
-//https://stackoverflow.com/questions/4728520/get-innerhtml-from-external-page-with-javascript
-
-//https://grid-sys.us-e1.cloudhub.io/api/elrs1?Lat=29.39780972&Lon=-94.98759004
-//https://grid-sys.us-e1.cloudhub.io/api/elrs2?RouteID=IH0010-KG&ReferenceMarker=476&Displacement=4
-//https://grid-sys.us-e1.cloudhub.io/api/elrs3?ControlSectionNumber=LY7609&MilePointMeasure=.2
-//https://grid-sys.us-e1.cloudhub.io/api/elrs4?RouteID=IH0010-KG&DistanceFromOrigin=.5
-
-
-  </script>
-
-
 </body>
 </html>
