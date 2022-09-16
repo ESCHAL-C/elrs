@@ -1,35 +1,47 @@
-function Convert_3_FromCSJ() {
-  console.log("function Convert_3_FromCSJ");
+function Convert_24_FromRte() {
+  console.log("function Convert_24_FromRte");
   async function updateEcho() {
       console.log("validating inputs");
-      var csj = $.trim(document.getElementById("csj").value);
-      document.getElementById("show_csj").innerHTML = csj;
-      var mpm = $.trim(document.getElementById("mpm").value);
-      document.getElementById("show_mpm").innerHTML = mpm;
-
-      var gridpath = "https://grid-sys.us-e1.cloudhub.io/api/"
-      var grid_elrs3 = gridpath + "elrs3?ControlSectionNumber=" + csj + "&MilePointMeasure=" + mpm
+      var routeid = $.trim(document.getElementById("routeid").value);
+      document.getElementById("show_routeid").innerHTML = routeid;
+      var refmarker = $.trim(document.getElementById("refmarker").value);
+      document.getElementById("show_refmarker").innerHTML = refmarker;
+      var displacement = $.trim(document.getElementById("displacement").value);
+      document.getElementById("show_displacement").innerHTML = displacement;
+      var dfo = $.trim(document.getElementById("dfo").value);
+      document.getElementById("show_dfo").innerHTML = dfo;
   }
 
-    async function getELRS3() {
-        var csj = $.trim(document.getElementById("csj").value);
-        var mpm = $.trim(document.getElementById("mpm").value);
+    async function getELRS24() {
+        var routeid = $.trim(document.getElementById("routeid").value);
+        var refmarker = $.trim(document.getElementById("refmarker").value);
+        var displacement = $.trim(document.getElementById("displacement").value);
+        var dfo = $.trim(document.getElementById("dfo").value);
         var gridpath = "https://grid-sys.us-e1.cloudhub.io/api/"
-        var grid_elrs3 = gridpath + "elrs3?ControlSectionNumber=" + csj + "&MilePointMeasure=" + mpm
+        var grid_elrs2 = gridpath + "elrs2?RouteID=" + routeid + "&ReferenceMarker=" + refmarker + "&Displacement=" + displacement
+        var grid_elrs4 = gridpath + "elrs4?RouteID=" + routeid + "&DistanceFromOrigin=" + dfo
+
+        if (routeid && refmarker && displacement) {
+          var grid_elrs24 = grid_elrs2;
+        } else if (routeid && dfo) {
+          var grid_elrs24 = grid_elrs4;
+        } else {
+          console.log("no URL");
+        }
 
         try {
-            const response = await fetch(grid_elrs3, {method: 'GET'});
+            const response = await fetch(grid_elrs24, {method: 'GET'});
             if (!response.ok) {
                   throw new Error(`Error! status: ${response.status}`);
                 }
 
                 const result = await response.json();
                 console.log(result);
-                document.getElementById("elrs3_url").innerHTML=grid_elrs3;
+                document.getElementById("elrs2_url").innerHTML=grid_elrs24;
                 console.log("updating URL");
-                document.getElementById("elrs3_url").href=grid_elrs3;
+                document.getElementById("elrs2_url").href=grid_elrs24;
                 console.log("updating URL");
-                document.getElementById("elrs_frame").src=grid_elrs3;
+                document.getElementById("elrs_frame").src=grid_elrs24;
                 console.log("updating iframe");
                 return result;
               } catch (err) {
@@ -37,9 +49,9 @@ function Convert_3_FromCSJ() {
               }
         }
 
-    async function renderELRS3() {
-        //const response = await getELRS3();
-        const result = await getELRS3();
+    async function renderELRS24() {
+        //const response = await getELRS2();
+        const result = await getELRS24();
         var route_count = Object.keys(result).length;
         document.getElementById("p_returned_RouteCount").innerHTML = route_count;
         //var route_count = result.length();
@@ -62,6 +74,6 @@ function Convert_3_FromCSJ() {
     }
 
     updateEcho();
-    getELRS3();
-    renderELRS3();
+    getELRS24();
+    renderELRS24();
   }

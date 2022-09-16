@@ -203,7 +203,7 @@ h4 {
   font-family: 'Red Hat Mono', monospace;
 }
 
-.label, .resultsbtn, .label_output {
+.label, .resultsbtn, .resetbtn, .label_output {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -250,6 +250,22 @@ h4 {
   font-size: 16px;
   border-radius: 10px;
 }
+
+.resetbtn {
+  width: 320px;
+  background-color: DimGrey;
+	color: White;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+
 
 .elrs_url {
   padding: 5px;

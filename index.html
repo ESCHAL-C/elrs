@@ -13,25 +13,26 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="elrs_scripts.js"></script>
+  <script src="UI_scripts.js"></script>
   <script src="Convert_1_FromLatLon_scripts.js"></script>
-  <script src="Convert_2_FromRteRefMrkr_scripts.js"></script>
   <script src="Convert_3_FromCSJ_scripts.js"></script>
-  <script src="Convert_4_FromRteDFO_scripts.js"></script>
+  <script src="Convert_24_FromRte_scripts.js"></script>
 </head>
 
 <body>
   <ul class="nav">
   </ul>
 
+  <div class="w3-panel w3-red">
+    <h3>Danger!</h3>
+    <p>Some field names appear to be swapped in the API.</p>
+  </div>
+
   <div class="w3-panel w3-yellow">
     <h3>Warning!</h3>
-    <p>Some field names appear to be swapped in the API.</p>
-    <p>Query by Route Name does not accept DFOs yet.</p>
     <p>When multiple roads are returned, only the last one is displayed.</p>
     <p>There is no error handling when no road is returned.</p>
     <p>This webpage does not have any data validation for text fields yet.</p>
-    <p>There is no clear button to remove inputs.</p>
   </div>
 
   <div class ="intro">
@@ -44,10 +45,12 @@
         <li>RouteID (Route Name), And Distance from Origin</li>
         <li>CSJ And Mile Point Measure</li>
       </ul>
+
+    <br><button type="button" onclick="Reset_InputForm()" class="resetbtn">Reset Form</button><br>
   </div>
 
   <div class="calculator">
-    <form>
+    <form id = "calculator_form">
         <div class="multi-input">
           <h2>Query by Lat Lon</h2>
           <h4><strong>Example: </strong></h4>
@@ -55,41 +58,44 @@
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
             <input type="text" id="lat" name="lat" class="textentry">
-            <p id="show_lat" class="textecho"></p>
+            <output id="show_lat" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="lon" class="label">Longitude:</label>
             <input type="text" id="lon" name="lon" class="textentry">
-            <p id="show_lon" class="textecho"></p>
+            <output id="show_lon" class="textecho"></output>
           </div>
           <br><button type="button" onclick="Convert_1_FromLatLon()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs1_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
           <h2>Query by Route Name</h2>
-          <h4><strong>Example: </strong></h4>
-          <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p>
+          <h4><strong>Example 1: </strong></h4>
+          <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p><br>
+          <h4><strong>Example 2: </strong></h4>
+          <p class="example">RouteID = IH0010-KG<br>DFO = .5</p>
           <div class="singleinput">
             <label for="routeid" class="label">Route Name:</label>
             <input type="text" id="routeid" name="routeid" class="textentry">
-            <p id="show_routeid" class="textecho"></p>
+            <output id="show_routeid" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="refmarker" class="label">Reference Marker:</label>
             <input type="text" id="refmarker" name="refmarker" class="textentry">
-            <p id="show_refmarker" class="textecho"></p>
+            <output id="show_refmarker" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="displacement" class="label">Displacement:</label>
             <input type="text" id="displacement" name="displacement" class="textentry">
-            <p id="show_displacement" class="textecho"></p>
+            <output id="show_displacement" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="dfo" class="label">Distance from Origin:</label>
             <input type="text" id="dfo" name="dfo" class="textentry">
-            <p id="show_dfo" class="textecho"></p>
+            <output id="show_dfo" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_2_FromRteRefMrkr()" class="resultsbtn">Return Results</button><br>
+          <!-- <br><button type="button" onclick="Convert_2_FromRteRefMrkr()" class="resultsbtn">Return Results</button><br> -->
+          <br><button type="button" onclick="Convert_24_FromRte()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs2_url" class="elrs_url"></a>
         </div>
         <div class="multi-input">
@@ -99,77 +105,83 @@
           <div class="singleinput">
             <label for="csj" class="label">CSJ:</label>
             <input type="text" id="csj" name="csj" class="textentry">
-            <p id="show_csj" class="textecho"></p>
+            <output id="show_csj" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="mpm" class="label">Mile Point Measure:</label>
             <input type="text" id="mpm" name="mpm" class="textentry">
-            <p id="show_mpm" class="textecho"></p>
+            <output id="show_mpm" class="textecho"></output>
           </div>
           <br><button type="button" onclick="Convert_3_FromCSJ()" class="resultsbtn">Return Results</button><br>
           <a href="" id="elrs3_url" class="elrs_url"></a>
         </div>
     </form>
-    <div class="results_pane">
+    <form class="results_pane" id = "calculator_report">
         <div class="multi-output">
+          <h2>Route Count</h2>
+          <div class="singleoutput">
+            <p class="label_output">Number Returned:</p>
+            <output id="p_returned_RouteCount" class="textout"></output>
+          </div>
+
           <h2>Results</h2>
           <div class="singleoutput">
             <p class="label_output">RouteID:</p>
-            <p id="p_returned_ROUTEID" class="textout"></p>
+            <output id="p_returned_ROUTEID" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Roadbed Type:</p>
-            <p id="p_returned_RDBD_TYPE_DSCR" class="textout"></p>
+            <output id="p_returned_RDBD_TYPE_DSCR" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Route Prefix Type:</p>
-            <p id="p_returned_RTE_PRFX_TYPE_DSCR" class="textout"></p>
+            <output id="p_returned_RTE_PRFX_TYPE_DSCR" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Route Number:</p>
-            <p id="p_returned_ROUTENUMBER" class="textout"></p>
+            <output id="p_returned_ROUTENUMBER" class="textout"></output>
           </div>
 
           <h2>Lat Lon</h2>
           <div class="singleoutput">
             <p class="label_output">Latitude:</p>
-            <p id="p_returned_LAT" class="textout"></p>
+            <output id="p_returned_LAT" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Longitude:</p>
-            <p id="p_returned_LON" class="textout"></p>
+            <output id="p_returned_LON" class="textout"></output>
           </div>
           <h2>Route Name</h2>
           <div class="singleoutput">
             <p class="label_output">Route Name:</p>
-            <p id="p_returned_RTE_DEFN_LN_NM" class="textout"></p>
+            <output id="p_returned_RTE_DEFN_LN_NM" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Reference Marker:</p>
-            <p id="p_returned_RMRKR_PNT_NBR" class="textout"></p>
+            <output id="p_returned_RMRKR_PNT_NBR" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Displacement:</p>
-            <p id="p_returned_RMRKR_DISPLACEMENT" class="textout"></p>
+            <output id="p_returned_RMRKR_DISPLACEMENT" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Distance from Origin:</p>
-            <p id="p_returned_RTE_DFO" class="textout"></p>
+            <output id="p_returned_RTE_DFO" class="textout"></output>
           </div>
 
           <h2>CSJ</h2>
           <div class="singleoutput">
             <p class="label_output">CSJ:</p>
-            <p id="p_returned_CTRL_SECT_LN_NBR" class="textout"></p>
+            <output id="p_returned_CTRL_SECT_LN_NBR" class="textout"></output>
           </div>
           <div class="singleoutput">
             <p class="label_output">Mile Point Measure:</p>
-            <p id="p_returned_CTRL_SECT_MPT" class="textout"></p>
+            <output id="p_returned_CTRL_SECT_MPT" class="textout"></output>
           </div>
 
         </div>
         <iframe src="" id="elrs_frame" ></iframe>
-    </div>
+    </form>
 
   </div>
 </body>
