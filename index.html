@@ -14,9 +14,7 @@
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="UI_scripts.js"></script>
-  <script src="Convert_1_FromLatLon_scripts.js"></script>
-  <script src="Convert_3_FromCSJ_scripts.js"></script>
-  <script src="Convert_24_FromRte_scripts.js"></script>
+  <script src="Convert_scripts_20220920.js"></script>
 </head>
 
 <body>
@@ -43,85 +41,102 @@
         <li>Lat, Lon</li>
         <li>RouteID (Route Name), Reference Marker, and Displacement</li>
         <li>RouteID (Route Name), And Distance from Origin</li>
-        <li>CSJ And Mile Point Measure</li>
+        <li>Control Section And Mile Point Measure</li>
       </ul>
 
     <br><button type="button" onclick="Reset_InputForm()" class="resetbtn">Reset Form</button><br>
   </div>
 
   <div class="calculator">
-    <form id = "calculator_form">
-        <div class="multi-input">
+    <div id = "calculator_form"> <!-- changed from form to div-->
+
+        <form id ="calculator_form_latlon" class="multi-input"> <!-- changed from div to form-->
           <h2>Query by Lat Lon</h2>
           <h4><strong>Example: </strong></h4>
           <p class="example">Lat = 29.39780972<br>Lon = -94.98759004</p>
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
-            <input type="text" id="lat" name="lat" class="textentry">
+            <input type="number" required id="lat" name="lat" class="textentry">
             <output id="show_lat" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="lon" class="label">Longitude:</label>
-            <input type="text" id="lon" name="lon" class="textentry">
+            <input type="number" required id="lon" name="lon" class="textentry">
             <output id="show_lon" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_1_FromLatLon()" class="resultsbtn">Return Results</button><br>
-          <a href="" id="elrs1_url" class="elrs_url"></a>
-        </div>
-        <div class="multi-input">
-          <h2>Query by Route Name</h2>
-          <h4><strong>Example 1: </strong></h4>
+          <br><button type="button" onclick="Convert_Coords(1)" class="resultsbtn">Return Results</button><br>
+        </form> <!-- changed from div to form-->
+
+        <form id ="calculator_form_refmrkr" class="multi-input"> <!-- changed from div to form-->
+          <h2>Query by Reference Marker</h2>
+          <h4><strong>Example: </strong></h4>
           <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p><br>
-          <h4><strong>Example 2: </strong></h4>
-          <p class="example">RouteID = IH0010-KG<br>DFO = .5</p>
           <div class="singleinput">
-            <label for="routeid" class="label">Route Name:</label>
-            <input type="text" id="routeid" name="routeid" class="textentry">
-            <output id="show_routeid" class="textecho"></output>
+            <label for="routeid_2" class="label">Route Name:</label>
+            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_2" name="routeid_2" class="textentry">
+            <output id="show_routeid_2" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="refmarker" class="label">Reference Marker:</label>
-            <input type="text" id="refmarker" name="refmarker" class="textentry">
+            <input type="number" required id="refmarker" name="refmarker" class="textentry">
             <output id="show_refmarker" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="displacement" class="label">Displacement:</label>
-            <input type="text" id="displacement" name="displacement" class="textentry">
+            <input type="number" required id="displacement" name="displacement" class="textentry">
             <output id="show_displacement" class="textecho"></output>
+          </div>
+          <br><button type="button" onclick="Convert_Coords(2)" class="resultsbtn">Return Results</button><br>
+        </form> <!-- changed from div to form-->
+
+        <form id ="calculator_form_dfo" class="multi-input"> <!-- changed from div to form-->
+          <h2>Query by DFO</h2>
+          <h4><strong>Example: </strong></h4>
+          <p class="example">RouteID = IH0010-KG<br>DFO = .5</p>
+          <div class="singleinput">
+            <label for="routeid_4" class="label">Route Name:</label>
+            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_4" name="routeid_4" class="textentry">
+            <output id="show_routeid_4" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="dfo" class="label">Distance from Origin:</label>
-            <input type="text" id="dfo" name="dfo" class="textentry">
+            <input type="number" required step="0.1" id="dfo" name="dfo" class="textentry">
             <output id="show_dfo" class="textecho"></output>
           </div>
-          <!-- <br><button type="button" onclick="Convert_2_FromRteRefMrkr()" class="resultsbtn">Return Results</button><br> -->
-          <br><button type="button" onclick="Convert_24_FromRte()" class="resultsbtn">Return Results</button><br>
-          <a href="" id="elrs2_url" class="elrs_url"></a>
-        </div>
-        <div class="multi-input">
-          <h2>Query by CSJ</h2>
+          <br><button type="button" onclick="Convert_Coords(4)" class="resultsbtn">Return Results</button><br>
+        </form> <!-- changed from div to form-->
+
+        <form id ="calculator_form_csj" class="multi-input"> <!-- changed from div to form-->
+          <h2>Query by Control Section</h2>
           <h4><strong>Example: </strong></h4>
           <p class="example">ControlSectionNumber = LY7609<br>MilePointMeasure = .2</p>
           <div class="singleinput">
-            <label for="csj" class="label">CSJ:</label>
-            <input type="text" id="csj" name="csj" class="textentry">
+            <label for="csj" class="label">Control Section:</label>
+            <input type="text" required id="csj" name="csj" class="textentry">
             <output id="show_csj" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="mpm" class="label">Mile Point Measure:</label>
-            <input type="text" id="mpm" name="mpm" class="textentry">
+            <input type="number" required id="mpm" name="mpm" class="textentry">
             <output id="show_mpm" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_3_FromCSJ()" class="resultsbtn">Return Results</button><br>
-          <a href="" id="elrs3_url" class="elrs_url"></a>
-        </div>
-    </form>
+          <br><button type="button" onclick="Convert_Coords(3)" class="resultsbtn">Return Results</button><br>
+        </form> <!-- changed from div to form-->
+
+    </div> <!-- changed from form to div-->
     <form class="results_pane" id = "calculator_report">
         <div class="multi-output">
+
           <h2>Route Count</h2>
           <div class="singleoutput">
             <p class="label_output">Number Returned:</p>
             <output id="p_returned_RouteCount" class="textout"></output>
+          </div>
+
+          <h2>URL</h2>
+          <div class="singleoutput">
+            <p class="label_output">URL:</p>
+            <a href="" id="elrs_url" class="elrs_url"></a>
           </div>
 
           <h2>Results</h2>
@@ -151,6 +166,7 @@
             <p class="label_output">Longitude:</p>
             <output id="p_returned_LON" class="textout"></output>
           </div>
+
           <h2>Route Name</h2>
           <div class="singleoutput">
             <p class="label_output">Route Name:</p>
@@ -169,9 +185,9 @@
             <output id="p_returned_RTE_DFO" class="textout"></output>
           </div>
 
-          <h2>CSJ</h2>
+          <h2>Control Section</h2>
           <div class="singleoutput">
-            <p class="label_output">CSJ:</p>
+            <p class="label_output">Control Section:</p>
             <output id="p_returned_CTRL_SECT_LN_NBR" class="textout"></output>
           </div>
           <div class="singleoutput">
