@@ -163,7 +163,7 @@ h4 {
 	padding: 10px;
 }
 
-.singleinput, .singleoutput {
+.singleinput, .singleoutput, .pagination {
   display: flex;
   flex-direction: row;
   flex-wrap: nowrap;
@@ -203,7 +203,7 @@ h4 {
   font-family: 'Red Hat Mono', monospace;
 }
 
-.label, .resultsbtn, .resetbtn, .label_output {
+.label, .resultsbtn, .resetbtn, .label_output, .page_btn, .page_disp {
   font-family: 'Poppins', sans-serif;
 }
 
@@ -263,6 +263,36 @@ h4 {
   display: inline-block;
   font-size: 16px;
   border-radius: 10px;
+}
+
+.page_btn {
+  width: 100px;
+  background-color: OrangeRed;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.page_disp {
+  width: 100px;
+  background-color: DimGrey;
+  border: none;
+  color: white;
+  padding: 10px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  border-radius: 10px;
+}
+
+.page_btn, .page_disp  {
+	visibility: hidden;
 }
 
 

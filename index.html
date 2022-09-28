@@ -13,8 +13,15 @@
   <link rel="stylesheet" href="style.css">
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
-  <script src="UI_scripts.js"></script>
-  <script src="Convert_scripts_20220920.js"></script>
+  <script src="UI_scripts_pg.js"></script>
+  <script src="Convert_scripts_20220928.js"></script>
+
+  <script>
+    console.log("setting current_page, route_count, elrs_method to 0");
+    var current_page = 0;
+    var route_count = 0;
+    var elrs_method = 0;
+  </script>
 </head>
 
 <body>
@@ -44,7 +51,7 @@
         <li>Control Section And Mile Point Measure</li>
       </ul>
 
-    <br><button type="button" onclick="Reset_InputForm()" class="resetbtn">Reset Form</button><br>
+    <br><button type="button" onclick="HardReset_Calculator(0)" class="resetbtn">Reset Form</button><br>
   </div>
 
   <div class="calculator">
@@ -52,8 +59,11 @@
 
         <form id ="calculator_form_latlon" class="multi-input"> <!-- changed from div to form-->
           <h2>Query by Lat Lon</h2>
-          <h4><strong>Example: </strong></h4>
-          <p class="example">Lat = 29.458244<br>Lon = -98.515803</p>
+          <h4><strong>Example (Texas City, TX): </strong></h4>
+          <!-- <p class="example">Lat = 29.39780972<br>Lon = -94.98759004</p>-->
+          <!-- <p class="example">Lat = 29.458244<br>Lon = -98.515803</p>-->
+          <!-- <p class="example">Lat = 29.921534<br>Lon = -96.880998</p>-->
+          <p class="example">Lat = 29.39780972<br>Lon = -94.98759004</p><br>
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
             <input type="number" required id="lat" name="lat" class="textentry">
@@ -64,13 +74,15 @@
             <input type="number" required id="lon" name="lon" class="textentry">
             <output id="show_lon" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_Coords(1)" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="renderELRS(1,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
 
         <form id ="calculator_form_refmrkr" class="multi-input"> <!-- changed from div to form-->
           <h2>Query by Reference Marker</h2>
-          <h4><strong>Example: </strong></h4>
-          <p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 540<br>Displacement = 0.404</p><br>
+          <h4><strong>Example (Refugio, TX): </strong></h4>
+          <!--<p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 476<br>Displacement = 4</p><br>-->
+          <!--<p class="example">RouteID = IH0010-KG<br>ReferenceMarker = 540<br>Displacement = 0.404</p><br>-->
+          <p class="example">RouteID = US0077-KG<br>ReferenceMarker = 622<br>Displacement = 0.065</p><br>
           <div class="singleinput">
             <label for="routeid_2" class="label">Route Name:</label>
             <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_2" name="routeid_2" class="textentry">
@@ -86,13 +98,15 @@
             <input type="number" required id="displacement" name="displacement" class="textentry">
             <output id="show_displacement" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_Coords(2)" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="renderELRS(2,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
 
         <form id ="calculator_form_dfo" class="multi-input"> <!-- changed from div to form-->
           <h2>Query by DFO</h2>
-          <h4><strong>Example: </strong></h4>
-          <p class="example">RouteID = IH0010-KG<br>DFO = 540.357</p>
+          <h4><strong>Example (Diboll, TX): </strong></h4>
+          <!-- <p class="example">RouteID = IH0010-KG<br>DFO = .5</p>-->
+          <!-- <p class="example">RouteID = IH0010-KG<br>DFO = 540.357</p>-->
+          <p class="example">RouteID = FM1818-KG<br>DFO = 1.606</p><br>
           <div class="singleinput">
             <label for="routeid_4" class="label">Route Name:</label>
             <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_4" name="routeid_4" class="textentry">
@@ -103,13 +117,15 @@
             <input type="number" required step="0.1" id="dfo" name="dfo" class="textentry">
             <output id="show_dfo" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_Coords(4)" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="renderELRS(4,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
 
         <form id ="calculator_form_csj" class="multi-input"> <!-- changed from div to form-->
           <h2>Query by Control Section</h2>
-          <h4><strong>Example: </strong></h4>
-          <p class="example">ControlSectionNumber = 007206<br>MilePointMeasure = 19.421</p>
+          <h4><strong>Example (Corsicana, TX): </strong></h4>
+          <!--<p class="example">ControlSectionNumber = LY7609<br>MilePointMeasure = .2</p>-->
+          <!--<p class="example">ControlSectionNumber = 007206<br>MilePointMeasure = 19.421</p>-->
+          <p class="example">ControlSectionNumber = 012201<br>MilePointMeasure = 2.394</p><br>
           <div class="singleinput">
             <label for="csj" class="label">Control Section:</label>
             <input type="text" required id="csj" name="csj" class="textentry">
@@ -120,12 +136,19 @@
             <input type="number" required id="mpm" name="mpm" class="textentry">
             <output id="show_mpm" class="textecho"></output>
           </div>
-          <br><button type="button" onclick="Convert_Coords(3)" class="resultsbtn">Return Results</button><br>
+          <br><button type="button" onclick="renderELRS(3,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
 
     </div> <!-- changed from form to div-->
     <form class="results_pane" id = "calculator_report">
-        <div class="multi-output">
+        <div class="multi-output" id="listingTable">
+          <!--<a href="javascript:prevPage()" id="btn_prev">Prev</a>
+          <a href="javascript:nextPage()" id="btn_next">Next</a>-->
+          <div class="pagination">
+            <button type="button" onclick="prevPage()" class="page_btn" id="btn_prev">Prev</button><br>
+            <span class="page_disp" id="page"></span>
+            <button type="button" onclick="nextPage()" class="page_btn" id="btn_next">Next</button><br>
+          </div>
 
           <h2>Route Count</h2>
           <div class="singleoutput">
