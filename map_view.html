@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>LRS Map</title>
+	<link rel="stylesheet" href="https://js.arcgis.com/3.32/esri/css/esri.css">
+	<link rel="stylesheet" href="style.css">
+	<link rel="stylesheet" href="map_view.css">
+
+	<script src="https://js.arcgis.com/3.31/"></script>
+	<script src="map_view.js"></script>
+	<script src="Convert_scripts_map.js"></script>
+</head>
+
+<!-- Begin HTML -->
+
+<body oncontextmenu="return false;" class="claro"; style="font-family: Calibri">
+
+	<div id="toc">
+		<ul class="nav">
+			<li><a href="index.html">Form View</a></li>
+			<li><a href="map_view.html">Map View</a></li>
+		</ul>
+		<div id="lrsTab">
+			<div class="tocTables">
+			<!--<h2>LRS Readout Tool</h2>
+			<h3 class="lrsTH">Latitude and Longitude</h3>
+			<p>Latitude: </p><p width="100" align="left" id="lat"></p>
+			<p>Longitude: </p><p width="100" align="left" id="long"></p>-->
+		</div>
+		</div>
+		<form class="results_pane" id = "calculator_report">
+				<div class="multi-output" id="listingTable">
+
+					<h2>Lat Lon</h2>
+					<div class="singleoutput">
+						<p class="label_output">Latitude:</p>
+						<output id="p_returned_LAT" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Longitude:</p>
+						<output id="p_returned_LON" class="textout"></output>
+					</div>
+
+					<h2>URL</h2>
+					<div class="singleoutput">
+						<p class="label_output">URL:</p>
+						<a href="" id="elrs_url" class="elrs_url"></a>
+					</div>
+
+					<div class="pagination">
+						<button type="button" onclick="prevPage()" class="page_btn" id="btn_prev">Prev</button><br>
+						<span class="page_disp" id="page"></span>
+						<button type="button" onclick="nextPage()" class="page_btn" id="btn_next">Next</button><br>
+					</div>
+
+					<h2>Results</h2>
+					<div class="singleoutput">
+						<p class="label_output">RouteID:</p>
+						<output id="p_returned_ROUTEID" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Roadbed Type:</p>
+						<output id="p_returned_RDBD_TYPE_DSCR" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Route Prefix Type:</p>
+						<output id="p_returned_RTE_PRFX_TYPE_DSCR" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Route Number:</p>
+						<output id="p_returned_ROUTENUMBER" class="textout"></output>
+					</div>
+
+
+
+					<h2>Route Name</h2>
+					<div class="singleoutput">
+						<p class="label_output">Route Name:</p>
+						<output id="p_returned_RTE_DEFN_LN_NM" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Reference Marker:</p>
+						<output id="p_returned_RMRKR_PNT_NBR" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Displacement:</p>
+						<output id="p_returned_RMRKR_DISPLACEMENT" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Distance from Origin:</p>
+						<output id="p_returned_RTE_DFO" class="textout"></output>
+					</div>
+
+					<h2>Control Section</h2>
+					<div class="singleoutput">
+						<p class="label_output">Control Section:</p>
+						<output id="p_returned_CTRL_SECT_LN_NBR" class="textout"></output>
+					</div>
+					<div class="singleoutput">
+						<p class="label_output">Mile Point Measure:</p>
+						<output id="p_returned_CTRL_SECT_MPT" class="textout"></output>
+					</div>
+
+				</div>
+		</form>
+	</div>
+	<div id="mapDiv"></div>
+</body>
+</html>

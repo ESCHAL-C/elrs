@@ -14,7 +14,7 @@
 
   <script src="https://code.jquery.com/jquery-3.2.1.min.js"></script>
   <script src="UI_scripts_pg.js"></script>
-  <script src="Convert_scripts_20220928.js"></script>
+  <script src="Convert_scripts.js"></script>
 
   <script>
     console.log("setting current_page, route_count, elrs_method to 0");
@@ -25,20 +25,24 @@
 </head>
 
 <body>
-  <ul class="nav">
-  </ul>
-
   <div class="w3-panel w3-red">
     <h3>Danger!</h3>
     <p>Some field names appear to be swapped in the API.</p>
+    <p>Sometimes only one road at an intersection is returned.</p>
   </div>
 
   <div class="w3-panel w3-yellow">
     <h3>Warning!</h3>
-    <p>When multiple roads are returned, only the last one is displayed.</p>
     <p>There is no error handling when no road is returned.</p>
-    <p>This webpage does not have any data validation for text fields yet.</p>
+    <p>This webpage has only limited data validation for text fields.</p>
   </div>
+
+  <ul class="nav">
+    <li><a href="index.html">Form View</a></li>
+    <li><a href="map_view.html">Map View</a></li>
+  </ul>
+
+
 
   <div class ="intro">
     <h1>eLRS Front End Demo</h1>
@@ -50,6 +54,7 @@
         <li>RouteID (Route Name), And Distance from Origin</li>
         <li>Control Section And Mile Point Measure</li>
       </ul>
+    <p>When multiple roads are returned, buttons appear to step through them.</p>
 
     <br><button type="button" onclick="HardReset_Calculator(0)" class="resetbtn">Reset Form</button><br>
   </div>
@@ -142,8 +147,6 @@
     </div> <!-- changed from form to div-->
     <form class="results_pane" id = "calculator_report">
         <div class="multi-output" id="listingTable">
-          <!--<a href="javascript:prevPage()" id="btn_prev">Prev</a>
-          <a href="javascript:nextPage()" id="btn_next">Next</a>-->
           <div class="pagination">
             <button type="button" onclick="prevPage()" class="page_btn" id="btn_prev">Prev</button><br>
             <span class="page_disp" id="page"></span>

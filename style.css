@@ -115,19 +115,19 @@ h1, h2, h4 {
 
 h1 {
   font-size: 40px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 h2 {
   font-size: 30px;
-  margin-top: 20px;
-  margin-bottom: 20px;
+  margin-top: 10px;
+  margin-bottom: 5px;
 }
 
 h4 {
   font-size: 20px;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
 }
 
 /* flex boxes */
@@ -208,18 +208,23 @@ h4 {
 }
 
 .label, .textentry, .textecho, .textout, .label_output {
-  padding: 5px;
-  margin-top: 10px;
+  padding: 3px;
+  margin-top: 5px;
   text-align: left;
+}
+
+.textout {
+	padding: 5px 10px 5px 10px;
+	margin-top: 5px;
+
 }
 
 .label, .label_output {
   width: 225px;
   background-color: LightBlue;
   border-radius: 10px 0 0 10px;
-  padding: 10px 10px 0;
-	padding: 10px 10px 10px 10px;
-	margin-top: 10px;
+	padding: 5px 10px 5px 10px;
+	margin-top: 5px;
 }
 
 .textentry {
@@ -234,8 +239,8 @@ h4 {
 }
 
 .textout {
-  width: 150px;
-  padding: 10px 10px 0;
+  width: 200px;
+  /*padding: 10px 10px 0;*/
 }
 
 .resultsbtn {
@@ -279,7 +284,7 @@ h4 {
 }
 
 .page_disp {
-  width: 100px;
+  width: 200px;
   background-color: DimGrey;
   border: none;
   color: white;
@@ -295,14 +300,10 @@ h4 {
 	visibility: hidden;
 }
 
-
-
 .elrs_url {
   padding: 5px;
-  margin-bottom: 20px;
+  /*margin-bottom: 20px;*/
 }
-
-
 
 input:invalid {
   box-shadow: 0 0 5px 1px red;
