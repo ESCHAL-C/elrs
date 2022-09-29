@@ -72,12 +72,10 @@
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
             <input type="number" required id="lat" name="lat" class="textentry">
-            <output id="show_lat" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="lon" class="label">Longitude:</label>
             <input type="number" required id="lon" name="lon" class="textentry">
-            <output id="show_lon" class="textecho"></output>
           </div>
           <br><button type="button" onclick="renderELRS(1,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
@@ -91,17 +89,14 @@
           <div class="singleinput">
             <label for="routeid_2" class="label">Route Name:</label>
             <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_2" name="routeid_2" class="textentry">
-            <output id="show_routeid_2" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="refmarker" class="label">Reference Marker:</label>
             <input type="number" required id="refmarker" name="refmarker" class="textentry">
-            <output id="show_refmarker" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="displacement" class="label">Displacement:</label>
             <input type="number" required id="displacement" name="displacement" class="textentry">
-            <output id="show_displacement" class="textecho"></output>
           </div>
           <br><button type="button" onclick="renderELRS(2,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
@@ -115,12 +110,10 @@
           <div class="singleinput">
             <label for="routeid_4" class="label">Route Name:</label>
             <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_4" name="routeid_4" class="textentry">
-            <output id="show_routeid_4" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="dfo" class="label">Distance from Origin:</label>
             <input type="number" required step="0.1" id="dfo" name="dfo" class="textentry">
-            <output id="show_dfo" class="textecho"></output>
           </div>
           <br><button type="button" onclick="renderELRS(4,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
@@ -134,12 +127,10 @@
           <div class="singleinput">
             <label for="csj" class="label">Control Section:</label>
             <input type="text" required id="csj" name="csj" class="textentry">
-            <output id="show_csj" class="textecho"></output>
           </div>
           <div class="singleinput">
             <label for="mpm" class="label">Mile Point Measure:</label>
             <input type="number" required id="mpm" name="mpm" class="textentry">
-            <output id="show_mpm" class="textecho"></output>
           </div>
           <br><button type="button" onclick="renderELRS(3,0)" class="resultsbtn">Return Results</button><br>
         </form> <!-- changed from div to form-->
@@ -151,18 +142,6 @@
             <button type="button" onclick="prevPage()" class="page_btn" id="btn_prev">Prev</button><br>
             <span class="page_disp" id="page"></span>
             <button type="button" onclick="nextPage()" class="page_btn" id="btn_next">Next</button><br>
-          </div>
-
-          <h2>Route Count</h2>
-          <div class="singleoutput">
-            <p class="label_output">Number Returned:</p>
-            <output id="p_returned_RouteCount" class="textout"></output>
-          </div>
-
-          <h2>URL</h2>
-          <div class="singleoutput">
-            <p class="label_output">URL:</p>
-            <a href="" id="elrs_url" class="elrs_url"></a>
           </div>
 
           <h2>Results</h2>
@@ -222,7 +201,23 @@
           </div>
 
         </div>
-        <iframe src="" id="elrs_frame" ></iframe>
+        <div class="multi-output" id="url_div">
+          <h2>Parameters</h2>
+          <div class="singleoutput">
+            <p class="label_output">Input:</p>
+            <output id="parameter_echo" class="textecho"></output>
+          </div>
+          <h2>URL</h2>
+          <div class="singleoutput">
+            <p class="label_output">URL:</p>
+            <a href="" id="elrs_url" class="elrs_url"></a>
+          </div>
+          <div class="singleoutput">
+            <p class="label_output">Routes Returned:</p>
+            <output id="p_returned_RouteCount" class="textout"></output>
+          </div>
+          <iframe src="" id="elrs_frame" ></iframe>
+        </div>
     </form>
 
   </div>

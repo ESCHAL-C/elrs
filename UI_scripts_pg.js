@@ -49,8 +49,8 @@ function Reset_InputFormsSome(elrs_method) {
 
 
 function Reset_Echo(elrs_method) {
-
-  if (elrs_method == 1) {
+  document.getElementById("parameter_echo").innerHTML = '';
+  /*if (elrs_method == 1) {
     console.log("resetting all echos except 1");
     document.getElementById("show_routeid_2").innerHTML = '';
     document.getElementById("show_refmarker").innerHTML = '';
@@ -96,7 +96,7 @@ function Reset_Echo(elrs_method) {
     document.getElementById("show_mpm").innerHTML = '';
     document.getElementById("show_routeid_4").innerHTML = '';
     document.getElementById("show_dfo").innerHTML = '';
-  }
+  }*/
 }
 
 
@@ -138,5 +138,5 @@ function HardReset_Calculator(elrs_method) {
 function SoftReset_Calculator(elrs_method) {
   console.log("soft reset");
   Reset_InputFormsSome(elrs_method);
-  Reset_Echo(elrs_method);
+  //Reset_Echo(elrs_method);
 }

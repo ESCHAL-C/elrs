@@ -7,7 +7,8 @@
     left: 2px;
     top: 2px;
     bottom: 70px;
-    overflow: auto;
+    /*overflow: auto;*/
+    overflow: hidden;
   }
 
   #mapDiv {

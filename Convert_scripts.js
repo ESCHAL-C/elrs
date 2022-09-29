@@ -7,7 +7,7 @@ function Convert_Coords(elrs_method) {
   function updateEcho(elrs_method) {
     console.log("update echo function");
 
-    if (elrs_method == 1) {
+    /*if (elrs_method == 1) {
       var lat = $.trim(document.getElementById("lat").value);
       document.getElementById("show_lat").innerHTML = lat;
       var lon = $.trim(document.getElementById("lon").value);
@@ -29,7 +29,28 @@ function Convert_Coords(elrs_method) {
       document.getElementById("show_routeid_4").innerHTML = routeid;
       var dfo = $.trim(document.getElementById("dfo").value);
       document.getElementById("show_dfo").innerHTML = dfo;
+    }*/
+
+    if (elrs_method == 1) {
+      var lat = $.trim(document.getElementById("lat").value);
+      var lon = $.trim(document.getElementById("lon").value);
+      document.getElementById("parameter_echo").innerHTML = "latitude: " + lat + "; longitude: " + lon;
+    } else if (elrs_method == 2) {
+      var routeid = $.trim(document.getElementById("routeid_2").value);
+      var refmarker = $.trim(document.getElementById("refmarker").value);
+      var displacement = $.trim(document.getElementById("displacement").value);
+      document.getElementById("parameter_echo").innerHTML = "routeid: " + routeid + "; refmarker: " + refmarker + "; displacement: " + displacement;
+    } else if (elrs_method == 3) {
+      var csj = $.trim(document.getElementById("csj").value);
+      var mpm = $.trim(document.getElementById("mpm").value);
+      document.getElementById("parameter_echo").innerHTML = "control section: " + csj + "; milepoint: " + mpm;
+    } else if (elrs_method == 4) {
+      var routeid = $.trim(document.getElementById("routeid_4").value);
+      var dfo = $.trim(document.getElementById("dfo").value);
+      document.getElementById("parameter_echo").innerHTML = "routeid: " + routeid + "; dfo: " + dfo;
     }
+
+
   }
 
 
