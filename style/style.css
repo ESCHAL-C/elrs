@@ -105,7 +105,7 @@ h4 {
 }
 
 .label, .label_output, .label_output_sm {
-  background-color: LightBlue;
+  background-color: #479DED;
   border-radius: 10px 0 0 10px;
 }
 
@@ -123,7 +123,7 @@ h4 {
 }
 
 .resultsbtn {
-  background-color: OrangeRed;
+  background-color: #EE3E42;
 }
 
 .resetbtn {
@@ -131,7 +131,7 @@ h4 {
 }
 
 .page_btn {
-  background-color: OrangeRed;
+  background-color: #EE3E42;
 }
 
 .page_disp {
@@ -139,13 +139,13 @@ h4 {
 }
 
 .mapbtn {
-  background-color: PaleVioletRed;
+  background-color: #F08688;
 }
 
 .rtebtn, .dforesultsbtn {
-  background-color: PaleVioletRed;
+  background-color: #F08688;
 }
 
 #returnBDFO {
-  background-color: OrangeRed;
+  background-color: #EE3E42;
 }
