@@ -105,7 +105,7 @@ h4 {
 }
 
 .label, .label_output, .label_output_sm {
-  background-color: #479DED;
+  background-color: #567EA6;/*half blue*/
   border-radius: 10px 0 0 10px;
 }
 
@@ -123,7 +123,7 @@ h4 {
 }
 
 .resultsbtn {
-  background-color: #EE3E42;
+  background-color: #CC7B29; /*full orange*/
 }
 
 .resetbtn {
@@ -131,7 +131,7 @@ h4 {
 }
 
 .page_btn {
-  background-color: #EE3E42;
+  background-color: #CC7B29; /*full orange*/
 }
 
 .page_disp {
@@ -139,13 +139,13 @@ h4 {
 }
 
 .mapbtn {
-  background-color: #F08688;
+  background-color: #D59F6A; /*full orange*/
 }
 
 .rtebtn, .dforesultsbtn {
-  background-color: #F08688;
+  background-color: #D59F6A; /*full orange*/
 }
 
 #returnBDFO {
-  background-color: #EE3E42;
+  background-color: #CC7B29; /*full orange*/
 }
