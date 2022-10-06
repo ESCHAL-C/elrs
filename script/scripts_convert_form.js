@@ -72,6 +72,7 @@ function Convert_Coords(elrs_method) {
     var grid_elrs3 = gridpath + "elrs3?ControlSectionNumber=" + csj + "&MilePointMeasure=" + mpm;
     var grid_elrs4 = gridpath + "elrs4?RouteID=" + routeid_4 + "&DistanceFromOrigin=" + dfo
 
+/*
     if (lat && lon) {
       var url = grid_elrs1;
     } else if (routeid_2 && refmarker && displacement) {
@@ -79,6 +80,18 @@ function Convert_Coords(elrs_method) {
     } else if (csj && mpm) {
       var url = grid_elrs3;
     } else if (routeid_4 && dfo) {
+      var url = grid_elrs4;
+    } else {
+      console.log("no URL");
+    }*/
+
+    if (elrs_method == 1) {
+      var url = grid_elrs1;
+    } else if (elrs_method == 2) {
+      var url = grid_elrs2;
+    } else if (elrs_method == 3) {
+      var url = grid_elrs3;
+    } else if (elrs_method == 4) {
       var url = grid_elrs4;
     } else {
       console.log("no URL");
@@ -124,6 +137,7 @@ function Convert_Coords(elrs_method) {
   updateEcho(elrs_method);
   SoftReset_Calculator(elrs_method);
   url = makeURL(elrs_method);
+  console.log("url: " + url);
   routes = parseJSON(url);
   return routes;
 }
