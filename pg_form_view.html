@@ -57,11 +57,11 @@
           <p class="example">Lat = 29.39780972<br>Lon = -94.98759004</p><br>
           <div class="singleinput">
             <label for="lat" class="label">Latitude:</label>
-            <input type="number" required id="lat" name="lat" class="textentry">
+            <input type="number" required id="lat" name="lat" value="29.39780972" class="textentry">
           </div>
           <div class="singleinput">
             <label for="lon" class="label">Longitude:</label>
-            <input type="number" required id="lon" name="lon" class="textentry">
+            <input type="number" required id="lon" name="lon" value="-94.98759004" class="textentry">
           </div>
           <br><button type="button" onclick="renderELRS(1,0)" id="returnResultsLatLon" class="resultsbtn">Return Results</button><br>
         </form>
@@ -74,15 +74,15 @@
           <p class="example">RouteID = US0077-KG<br>ReferenceMarker = 622<br>Displacement = 0.065</p><br>
           <div class="singleinput">
             <label for="routeid_2" class="label">Route Name:</label>
-            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_2" name="routeid_2" class="textentry">
+            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_2" name="routeid_2" value="US0077-KG" class="textentry">
           </div>
           <div class="singleinput">
             <label for="refmarker" class="label">Reference Marker:</label>
-            <input type="number" required id="refmarker" name="refmarker" class="textentry">
+            <input type="number" required id="refmarker" name="refmarker" value="622" class="textentry">
           </div>
           <div class="singleinput">
             <label for="displacement" class="label">Displacement:</label>
-            <input type="number" required id="displacement" name="displacement" class="textentry">
+            <input type="number" required id="displacement" name="displacement" value="0.065" class="textentry">
           </div>
           <br><button type="button" onclick="renderELRS(2,0)" id="returnResultsRefMrkr" class="resultsbtn js-click">Return Results</button><br>
         </form>
@@ -95,11 +95,11 @@
           <p class="example">RouteID = FM1818-KG<br>DFO = 1.606</p><br>
           <div class="singleinput">
             <label for="routeid_4" class="label">Route Name:</label>
-            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_4" name="routeid_4" class="textentry">
+            <input type="text" required pattern="[A-Z]{2}\d{4}[A-Z]?-[A-Z]{2}" id="routeid_4" name="routeid_4" value="FM1818-KG" class="textentry">
           </div>
           <div class="singleinput">
             <label for="dfo" class="label">Distance from Origin:</label>
-            <input type="number" required step="0.1" id="dfo" name="dfo" class="textentry">
+            <input type="number" required step="0.1" id="dfo" name="dfo" value="1.606" class="textentry">
           </div>
           <br><button type="button" onclick="renderELRS(4,0)" id="returnResultsDFO" class="resultsbtn js-click">Return Results</button><br>
         </form>
@@ -112,11 +112,11 @@
           <p class="example">ControlSectionNumber = 012201<br>MilePointMeasure = 2.394</p><br>
           <div class="singleinput">
             <label for="csj" class="label">Control Section:</label>
-            <input type="text" required id="csj" name="csj" class="textentry">
+            <input type="text" required id="csj" name="csj" value="012201" class="textentry">
           </div>
           <div class="singleinput">
             <label for="mpm" class="label">Mile Point Measure:</label>
-            <input type="number" required id="mpm" name="mpm" class="textentry">
+            <input type="number" required id="mpm" name="mpm" value="2.394" class="textentry">
           </div>
           <br><button type="button" onclick="renderELRS(3,0)" id="returnResultsCS" class="resultsbtn js-click">Return Results</button><br>
         </form>
